@@ -1,1 +1,7 @@
-Our Authors Page
+# This file lists all individuals having contributed content to the repository.
+
+Simon Sun <sunmingyu.97@gmail.com>
+
+Hector Lozano <hlr8503@gmail.com>
+
+# For how it is generated, see `hack/generate-authors.sh`.
