@@ -11,13 +11,13 @@ class BaseModel:
 
     def __init__(self):
         self.created_at = datetime.now()
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
 
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
 
-        self.update_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance"""
@@ -27,9 +27,8 @@ class BaseModel:
             if k == "created_at":
                 instance_dict[k] = instance_dict[k].isoformat()
             if k == "update_at":
-                instance_dict[k] = self.update_at.isoformat()
+                instance_dict[k] = self.updated_at.isoformat()
         return instance_dict
 
     def __str__(self):
         return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
-
