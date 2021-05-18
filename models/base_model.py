@@ -25,9 +25,9 @@ class BaseModel:
         instance_dict['__class__'] = str(type(self).__name__)
         for k in instance_dict.keys():
             if k == "created_at":
-                instance_dict[k] = instance_dict[k].isoformat()
-            if k == "update_at":
-                instance_dict[k] = self.updated_at.isoformat()
+                instance_dict[k] = str(instance_dict[k].isoformat())
+            if k == "updated_at":
+                instance_dict[k] = str(instance_dict[k].isoformat())
         return instance_dict
 
     def __str__(self):
