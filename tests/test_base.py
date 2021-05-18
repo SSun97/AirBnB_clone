@@ -1,17 +1,22 @@
 #!/usr/bin/python3
-"""test the almost a circle project"""
+"""test the airbnb project"""
 
 
 import unittest
-from models.base import Base
-from models.rectangle import Rectangle
-from models.square import Square
+import uuid
+from models.base_model import BaseModel
+from datetime import datetime
+#from models.base_model import Rectangle
+# from models.square import Square
 
 class TestClassMerthods(unittest.TestCase):
-    """test the almost a circle project"""
+    """test the Airbnb project"""
 
-    def test_Base_id(self):
-        self.assertEqual(Base().id, 1)
+    def test_BaseModel_id(self):
+        self.assertEqual(type(BaseModel().genarate_id()), uuid.UUID)
+
+    def test_create_time(self):
+        self.assertEqual(type(BaseModel().create_at()), datetime)
 
 
 
