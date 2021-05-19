@@ -12,4 +12,4 @@ class TestFileStorageClass(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_File_storage(self):
-        self.assertEqual(hasattr(storage1, '__file_path'), False)
+        self.assertTrue(type(storage1._FileStorage__file_path) is str)
