@@ -33,6 +33,10 @@ class TestFileStorageClass(unittest.TestCase):
         FileStorage.save(self)
         with open("file.json") as f:
             dict1 = json.load(f)
-        self.assertTrue(type(dict1), dict)
+            self.assertTrue(type(dict1), dict)
 
 
+
+
+if __name__ == '__main__':
+    unittest.main()
