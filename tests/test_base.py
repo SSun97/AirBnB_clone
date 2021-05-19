@@ -4,6 +4,8 @@
 
 import unittest
 import uuid
+from time import sleep
+
 from models.base_model import BaseModel
 from datetime import datetime
 #from models.base_model import Rectangle
@@ -19,10 +21,15 @@ class TestClassMerthods(unittest.TestCase):
         self.assertEqual(type(BaseModel().created_at), datetime)
 
     def test_save(self):
-        self.assertEqual(BaseModel().save(), None)
+        nb = BaseModel()
+        nb.save()
+        t1 = nb.updated_at
+        nb.save()
+        t2 = nb.updated_at
+        self.assertNotEqual(t1, t2)
 
     def assertHasAttr(self):
-        testBool = hasattr(BaseModel(), '1save()')
+        testBool = hasattr(BaseModel(), 'save()')
         self.assertTrue(testBool)
 
 
