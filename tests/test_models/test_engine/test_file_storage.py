@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """test the airbnb project"""
-
-
+import json
 import unittest
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
@@ -22,3 +21,7 @@ class TestFileStorageClass(unittest.TestCase):
         dic2 = storage1.all()
         self.assertTrue(type(dic1) is dict)
         self.assertTrue(dic1, dic2)
+        with open("file.json", 'r') as f:
+            dict1 = json.load(f)
+        self.assertTrue(type(dict1), dict)
+
