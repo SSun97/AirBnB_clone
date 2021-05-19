@@ -21,6 +21,9 @@ class TestClassMerthods(unittest.TestCase):
     def test_save(self):
         self.assertEqual(BaseModel().save(), None)
 
+    def assertHasAttr(self):
+        testBool = hasattr(BaseModel(), '1save()')
+        self.assertTrue(testBool)
 
 
 

@@ -9,10 +9,18 @@ class BaseModel:
     """the class of Airbnb Base Model"""
 
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         self.id = str(uuid.uuid4())
+        attr_list = ["id", "created_at", "updated_at", "name", "my_number"]
+        if len(kwargs) > 0:
+            for k, v in kwargs.items():
+                for i in range(len(attr_list)):
+                    if k == attr_list[i] and (k == "created_at" or k == "updated_at"):
+                        setattr(self, attr_list[i], datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f'))
+                    elif k == attr_list[i]:
+                        setattr(self, attr_list[i], v)
 
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
