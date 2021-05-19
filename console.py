@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Doc"""
+"""The module of a console"""
 
 
 import cmd
