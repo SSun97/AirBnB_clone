@@ -2,6 +2,7 @@
 """test the airbnb project"""
 import json
 import unittest
+from os import remove
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from datetime import datetime
@@ -21,6 +22,13 @@ class TestFileStorageClass(unittest.TestCase):
         dic2 = storage1.all()
         self.assertTrue(type(dic1) is dict)
         self.assertTrue(dic1, dic2)
+    def test_save(self):
+        try:
+            remove("file.json")
+        except:
+            pass
+        nb = BaseModel()
+        nb.save()
         with open("file.json", 'r') as f:
             dict1 = json.load(f)
         self.assertTrue(type(dict1), dict)
