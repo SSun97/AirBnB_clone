@@ -35,6 +35,17 @@ class TestFileStorageClass(unittest.TestCase):
             dict1 = json.load(f)
             self.assertTrue(type(dict1), dict)
 
+    def test_reload(self):
+        try:
+            remove("file.json")
+        except:
+            pass
+        storage2 = FileStorage()
+        storage2.save()
+        storage2.reload()
+        dict1 = storage2.all()
+        self.assertEqual(dict1, storage1.all())
+
 
 
 

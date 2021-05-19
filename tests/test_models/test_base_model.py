@@ -20,6 +20,9 @@ class TestClassMerthods(unittest.TestCase):
         nb.save()
         t1 = nb.updated_at
         nb.save()
+        nb.save()
+        nb.save()
+        nb.save()
         t2 = nb.updated_at
         self.assertNotEqual(t1, t2)
 
