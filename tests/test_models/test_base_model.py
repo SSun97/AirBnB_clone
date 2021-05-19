@@ -3,12 +3,8 @@
 
 
 import unittest
-import uuid
-
 from models.base_model import BaseModel
 from datetime import datetime
-#from models.base_model import Rectangle
-# from models.square import Square
 
 class TestClassMerthods(unittest.TestCase):
     """test the Airbnb project"""
