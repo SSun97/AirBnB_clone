@@ -40,4 +40,5 @@ class FileStorage:
             return
         with open(FileStorage.__file_path, "r") as f:
             obj_dict = json.load(f)
-            FileStorage.__objects = obj_dict
+            for k, v in obj_dict.items():
+                FileStorage.__objects[k] = BaseModel(**v)
