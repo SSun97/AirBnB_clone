@@ -13,3 +13,7 @@ class TestFileStorageClass(unittest.TestCase):
 
     def test_File_storage(self):
         self.assertTrue(type(storage1._FileStorage__file_path) is str)
+        self.assertTrue(type(storage1._FileStorage__objects) is dict)
+
+    def test_functions(self):
+        self.assertTrue(type(storage1.all()) is dict)
