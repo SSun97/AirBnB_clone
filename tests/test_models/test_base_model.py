@@ -27,6 +27,11 @@ class TestClassMerthods(unittest.TestCase):
         t2 = nb.updated_at
         self.assertNotEqual(t1, t2)
 
+    def test_to_dict(self):
+        nb = BaseModel()
+        self.assertEqual(type(nb.to_dict()), dict)
+
+
     def assertHasAttr(self):
         testBool = hasattr(BaseModel(), 'save()')
         self.assertTrue(testBool)
