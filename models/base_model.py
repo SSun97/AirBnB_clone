@@ -1,17 +1,15 @@
 #!/usr/bin/python3
 """Airbnb base model"""
 from datetime import datetime
-from models import storage
 import uuid
+import models
 
 
 class BaseModel:
     """the class of Airbnb Base Model"""
 
     def __init__(self, **kwargs):
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        self.id = str(uuid.uuid4())
+
         attr_list = ["id", "created_at", "updated_at", "name", "my_number"]
         if len(kwargs) > 0:
             for k, v in kwargs.items():
@@ -21,14 +19,17 @@ class BaseModel:
                     elif k == attr_list[i]:
                         setattr(self, attr_list[i], v)
         else:
-            obj = {"{}.{}".format(type(self).__name__, self.id):self.to_dict()}
-            storage.new(obj)
+            # obj = {"{}.{}".format(type(self).__class__.__name__, self.id): self}
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.id = str(uuid.uuid4())
+            models.storage.new(self)
 
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
 
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance"""
