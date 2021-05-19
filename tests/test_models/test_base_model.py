@@ -29,7 +29,8 @@ class TestClassMerthods(unittest.TestCase):
 
     def test_to_dict(self):
         nb = BaseModel()
-        self.assertEqual(type(nb.to_dict()), dict)
+        dict1 = nb.to_dict()
+        self.assertEqual(type(dict1), dict)
 
 
     def assertHasAttr(self):
