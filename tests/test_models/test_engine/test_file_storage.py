@@ -16,5 +16,9 @@ class TestFileStorageClass(unittest.TestCase):
         self.assertTrue(type(storage1._FileStorage__objects) is dict)
 
     def test_functions(self):
-        dic1 = storage1.all()
+        dic1 = storage1.all().copy()
+        nb = BaseModel()
+        nb.save()
+        dic2 = storage1.all()
         self.assertTrue(type(dic1) is dict)
+        self.assertTrue(dic1, dic2)
