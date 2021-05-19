@@ -29,7 +29,10 @@ class TestFileStorageClass(unittest.TestCase):
             pass
         nb = BaseModel()
         nb.save()
-        with open("file.json", 'r') as f:
+        storage1.save()
+        FileStorage.save(self)
+        with open("file.json") as f:
             dict1 = json.load(f)
         self.assertTrue(type(dict1), dict)
+
 
