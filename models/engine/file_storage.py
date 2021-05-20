@@ -30,6 +30,7 @@ class FileStorage:
         with open(FileStorage.__file_path, "w") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
+            f.close()
 
     def reload(self):
         """deserializes the JSON file to __objects (only if the JSON file (__file_path) exists ;
@@ -42,3 +43,4 @@ class FileStorage:
             obj_dict = json.load(f)
             for k, v in obj_dict.items():
                 FileStorage.__objects[k] = BaseModel(**v)
+            f.close()

@@ -10,14 +10,13 @@ class BaseModel:
 
     def __init__(self, **kwargs):
 
-        attr_list = ["id", "created_at", "updated_at", "name", "my_number"]
-        if len(kwargs) > 0:
+        if kwargs:
             for k, v in kwargs.items():
-                for i in range(len(attr_list)):
-                    if k == attr_list[i] and (k == "created_at" or k == "updated_at"):
-                        setattr(self, attr_list[i], datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f'))
-                    elif k == attr_list[i]:
-                        setattr(self, attr_list[i], v)
+                if k == "created_at" or k == "updated_at":
+                    setattr(self, k, datetime.strptime(v, '%Y-%m-%dT%H:%M:%S.%f'))
+                else:
+                    if k != "__class__":
+                        setattr(self, k, v)
         else:
             # obj = {"{}.{}".format(type(self).__class__.__name__, self.id): self}
             self.created_at = datetime.now()
