@@ -120,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             for key, val in models.storage.all().items():
                 if args[1] in key.split("."):
                     if len(args) == 2:
-                        print(" ** attribute name missing **")
+                        print("** attribute name missing **")
                         return
                     if len(args) == 3:
                         print("** value missing **")
