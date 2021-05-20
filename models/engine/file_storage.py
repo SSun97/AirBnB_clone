@@ -3,13 +3,16 @@
 import json
 import os
 from models.base_model import BaseModel
-
+from models.user import User
 
 class FileStorage:
     """store the information of airbnb"""
 
     __file_path = 'file.json'
     __objects = {}    # saving the existing instances
+    classes = {'BaseModel': BaseModel,
+               'User': User,
+              }
 
     def all(self):
         """return __object dictionary"""
