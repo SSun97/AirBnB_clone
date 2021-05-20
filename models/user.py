@@ -3,5 +3,10 @@
 from models.base_model import BaseModel
 
 
-class user(BaseModel):
-    pass
+class User(BaseModel):
+    """User class to inherit BaseModel"""
+
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
