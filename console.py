@@ -104,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
             print(list_of_strings)
             return
 
-    def do_update(self, arg):
+    def do_update(self,arg):
         """update the information of an instance\n"""
         if not arg:
             print("** class name missing **")
@@ -113,25 +113,25 @@ class HBNBCommand(cmd.Cmd):
         if args[0] != 'BaseModel':
             print("** class doesn't exist")
             return
-        if len(args) == 1:
+        elif len(args) < 2:
             print("** instance id missing **")
             return
-        if len(args) >= 2:
+        elif len(args) < 3:
             for key, val in models.storage.all().items():
                 if args[1] in key.split("."):
-                    if len(args) == 2:
-                        print(" ** attribute name missing **")
-                        return
-                    if len(args) == 3:
-                        print("** value missing **")
-                        return
-                    if len(args) >= 4:
-                        setattr(models.storage.all()[key], args[2], args[3])
-                        models.storage.save()
-                        models.storage.reload()
-                        return
-                else:
-                    print("** no instance found **")
+                    print("** attribute name missing **")
+                    return
+            else:
+                print("** no instance found **")
+        elif len(args) < 4:
+            print("** value missing **")
+            return
+        else:
+            for key, val in models.storage.all().items():
+                if args[1] in key.split("."):
+                    setattr(models.storage.all()[key], args[2], args[3])
+                    models.storage.save()
+                    models.storage.reload()
                     return
 
 
