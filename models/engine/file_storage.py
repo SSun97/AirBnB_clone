@@ -9,7 +9,7 @@ class FileStorage:
     """store the information of airbnb"""
 
     __file_path = 'file.json'
-    __objects = {}
+    __objects = {}    # saving the existing instances
 
     def all(self):
         """return __object dictionary"""

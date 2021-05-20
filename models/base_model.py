@@ -8,7 +8,7 @@ import models
 class BaseModel:
     """the class of Airbnb Base Model"""
 
-    def __init__(self, **kwargs):
+    def __init__(self, **kwargs): # A = BaseModel(id = 123134, created_at = 2021)
 
         if kwargs:
             for k, v in kwargs.items():
