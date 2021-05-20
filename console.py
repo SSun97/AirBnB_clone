@@ -33,7 +33,7 @@ class HBNBCommand(cmd.Cmd):
                 print(nb.id)
                 return
             else:
-                print("** class doesn't exist")
+                print("** class doesn't exist **")
                 return
         else:
             print("** class name missing **")
@@ -69,7 +69,7 @@ class HBNBCommand(cmd.Cmd):
             return
         args = arg.split()
         if args[0] != 'BaseModel':
-            print("** class doesn't exist")
+            print("** class doesn't exist **")
             return
 
         if len(args) < 2:
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
             print(list_of_strings)
             return
         if arg != 'BaseModel':
-            print("** class doesn't exist")
+            print("** class doesn't exist **")
             return
         if arg == 'BaseModel':
             list_of_strings = []
