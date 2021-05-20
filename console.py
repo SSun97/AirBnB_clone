@@ -73,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
             return
 
         if len(args) < 2:
-            print("** instance id missing")
+            print("** instance id missing **")
             return
         else:
             if args[1]:
