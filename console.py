@@ -5,7 +5,7 @@
 import cmd
 import models
 from models import FileStorage
-
+from models.user import User
 from models.base_model import BaseModel
 
 
@@ -27,8 +27,11 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         'create a new instance\n'
         if arg:
-            if arg == 'BaseModel':
-                nb = BaseModel()
+            if arg in FileStorage.classes:
+                if arg == "BaseModel":
+                    nb = BaseModel()
+                if arg == "User":
+                    nb = User()
                 nb.save()
                 print(nb.id)
                 return
