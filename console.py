@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist")
                 return
         elif len(args) < 2:
-            print("** instance id missing")
+            print("** instance id missing **")
             return
         elif len(args) < 3:
             for key, val in models.storage.all().items():
