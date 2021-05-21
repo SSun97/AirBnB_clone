@@ -13,3 +13,4 @@ class User(BaseModel):
 
     def __init__(self):
         super().__init__()
+        super().__str__()
