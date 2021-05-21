@@ -11,12 +11,14 @@ from os import remove, path
 
 from models.user import User
 
-
+A = User()
 class TestClassMerthods(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_user_email(self):
         self.assertTrue(hasattr(User, 'email'))
+        self.assertEqual(type(A.email), str)
+
 
     def test_user_password(self):
         self.assertTrue(hasattr(User, 'password'))
