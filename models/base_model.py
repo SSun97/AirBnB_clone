@@ -33,7 +33,7 @@ class BaseModel:
     def to_dict(self):
         """ returns a dictionary containing all keys/values of __dict__ of the instance"""
         instance_dict = self.__dict__.copy()
-        instance_dict['__class__'] = str(type(self).__name__)
+        instance_dict['__class__'] = str(self.__class__.__name__)
         for k in instance_dict.keys():
             if k == "created_at":
                 instance_dict[k] = str(instance_dict[k].isoformat())

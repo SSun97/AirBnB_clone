@@ -23,7 +23,7 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
 
-        key = "{}.{}".format(type(obj).__name__, obj.id)
+        key = "{}.{}".format(obj.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -44,5 +44,8 @@ class FileStorage:
         with open(FileStorage.__file_path, "r") as f:
             obj_dict = json.load(f)
             for k, v in obj_dict.items():
-                FileStorage.__objects[k] = BaseModel(**v)
+                if v['__class__'] == 'User':
+                    FileStorage.__objects[k] = User(**v)
+                if v['__class__'] == 'BaseModel':
+                    FileStorage.__objects[k] = BaseModel(**v)
             f.close()

@@ -11,6 +11,9 @@ class User(BaseModel):
     first_name = ""
     last_name = ""
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__()
-        super().__str__()
+
+    # def __str__(self):
+    #     return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
