@@ -22,12 +22,15 @@ class TestClassMerthods(unittest.TestCase):
 
     def test_user_password(self):
         self.assertTrue(hasattr(User, 'password'))
+        self.assertEqual(type(A.password), str)
 
     def test_user_first_name(self):
         self.assertTrue(hasattr(User, 'first_name'))
+        self.assertEqual(type(A.first_name), str)
 
     def test_user_last_name(self):
         self.assertTrue(hasattr(User, 'last_name'))
+        self.assertEqual(type(A.last_name), str)
 
 
 
