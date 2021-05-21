@@ -98,16 +98,18 @@ class HBNBCommand(cmd.Cmd):
                 list_of_strings.append(str(val))
             print(list_of_strings)
             return
-        if arg != 'BaseModel':
-            print("** class doesn't exist **")
-            return
-        if arg == 'BaseModel':
-            list_of_strings = []
-            for key, val in models.storage.all().items():
-                if arg in key.split("."):
-                    list_of_strings.append(str(val))
-            print(list_of_strings)
-            return
+        else:
+            args = arg.split()
+            if args[0] not in FileStorage.classes:
+                print("** class doesn't exist **")
+                return
+            else:
+                list_of_strings = []
+                for key, val in models.storage.all().items():
+                    if arg in key.split("."):
+                        list_of_strings.append(str(val))
+                print(list_of_strings)
+                return
 
     def do_update(self, arg):
         """update the information of an instance\n"""
