@@ -26,11 +26,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         'create a new instance\n'
+
         if arg:
             if arg in FileStorage.classes:
                 if arg == "BaseModel":
                     nb = BaseModel()
-                if arg == "User":
+                elif arg == "User":
                     nb = User()
                 nb.save()
                 print(nb.id)
@@ -82,9 +83,9 @@ class HBNBCommand(cmd.Cmd):
                             models.storage.all().pop(key)
                             models.storage.save()
                             return
-                        else:
-                            print("** no instance found **")
-                            return
+                    else:
+                        print("** no instance found **")
+                        return
                 else:
                     print("** instance id missing **")
                     return

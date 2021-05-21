@@ -17,8 +17,7 @@ class FileStorage:
 
     def all(self):
         """return __object dictionary"""
-        self.reload()
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
@@ -32,7 +31,6 @@ class FileStorage:
         with open(FileStorage.__file_path, "w") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
-            f.close()
 
     def reload(self):
         """deserializes the JSON file to __objects (only if the JSON file (__file_path) exists ;
@@ -44,8 +42,7 @@ class FileStorage:
         with open(FileStorage.__file_path, "r") as f:
             obj_dict = json.load(f)
             for k, v in obj_dict.items():
-                if v['__class__'] == 'User':
+                if 'User' in k.split("."):
                     FileStorage.__objects[k] = User(**v)
-                if v['__class__'] == 'BaseModel':
+                if 'BaseModel' in k.split("."):
                     FileStorage.__objects[k] = BaseModel(**v)
-            f.close()
