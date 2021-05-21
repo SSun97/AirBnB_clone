@@ -137,8 +137,7 @@ class HBNBCommand(cmd.Cmd):
                         return
                     if len(args) >= 4:
                         setattr(models.storage.all()[key], args[2], args[3])
-                        models.storage.save()
-                        models.storage.reload()
+                        val.save()
                         return
                 else:
                     print("** no instance found **")
