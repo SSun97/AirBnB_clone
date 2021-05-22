@@ -2,9 +2,12 @@
 """Doc"""
 import json
 import os
-
-import models
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 
 class FileStorage:
@@ -46,3 +49,13 @@ class FileStorage:
                     FileStorage.__objects[k] = User(**v)
                 if 'BaseModel' in k.split("."):
                     FileStorage.__objects[k] = BaseModel(**v)
+                if 'State' in k.split("."):
+                    FileStorage.__objects[k] = State(**v)
+                if 'City' in k.split("."):
+                    FileStorage.__objects[k] = City(**v)
+                if 'Place' in k.split("."):
+                    FileStorage.__objects[k] = Place(**v)
+                if 'Amenity' in k.split("."):
+                    FileStorage.__objects[k] = Amenity(**v)
+                if 'Review' in k.split("."):
+                    FileStorage.__objects[k] = Review(**v)
