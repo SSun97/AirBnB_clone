@@ -5,6 +5,11 @@
 import cmd
 import models
 from models import FileStorage
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 from models.base_model import BaseModel
 
@@ -31,6 +36,16 @@ class HBNBCommand(cmd.Cmd):
             if arg in FileStorage.classes:
                 if arg == "BaseModel":
                     nb = BaseModel()
+                elif arg == "State":
+                    nb = State()
+                elif arg == "City":
+                    nb = City()
+                elif arg == "Amenity":
+                    nb = Amenity()
+                elif arg == "Place":
+                    nb = Place()
+                elif arg == "Review":
+                    nb = Review()
                 elif arg == "User":
                     nb = User()
                 nb.save()
