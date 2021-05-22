@@ -13,4 +13,4 @@ class TestClassMethods(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_State_Amenity(self):
-        self.assertEqual(type(A.name),str)
+        self.assertEqual(type(A.name), str)
