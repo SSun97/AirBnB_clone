@@ -12,7 +12,9 @@ from os import remove, path
 from models.user import User
 
 A = User()
-class TestClassMerthods(unittest.TestCase):
+
+
+class TestClassMethods(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_user_email(self):

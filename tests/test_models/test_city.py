@@ -7,7 +7,9 @@ from models.city import City
 
 
 A = City()
-class TestClassMerthods(unittest.TestCase):
+
+
+class TestClassMethods(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_State_attr(self):
