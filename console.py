@@ -76,7 +76,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     if len(args) >= 2:
                         for key, val in models.storage.all().items():
-                            if (args[1] in key.split(".")) and (args[0] in key.split(".")):
+                            if "{}.{}".format(args[0], args[1]) == key:
                                 print(val)
                                 return
                         else:
