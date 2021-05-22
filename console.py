@@ -18,6 +18,9 @@ class HBNBCommand(cmd.Cmd):
     """the console of airbnb"""
     prompt = '(hbnb) '
 
+    def default(self, line: str):
+        args = line.split(".")
+
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
         return True
