@@ -1,2 +1,15 @@
 #!/usr/bin/python3
-"""Doc"""
+"""test the airbnb project"""
+
+
+import unittest
+from models.city import City
+
+
+A = City()
+class TestClassMerthods(unittest.TestCase):
+    """test the Airbnb project"""
+
+    def test_State_attr(self):
+        self.assertEqual(type(A.state_id), str)
+        self.assertEqual(type(A.name),str)
