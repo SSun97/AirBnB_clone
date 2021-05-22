@@ -15,8 +15,7 @@ class FileStorage:
 
     __file_path = 'file.json'
     __objects = {}    # saving the existing instances
-    classes = {'BaseModel': BaseModel,
-               'User': User}
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
 
     def all(self):
         """return __object dictionary"""
