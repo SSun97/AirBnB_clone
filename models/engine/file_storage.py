@@ -16,7 +16,8 @@ class FileStorage:
 
     __file_path = 'file.json'
     __objects = {}    # saving the existing instances
-    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity',
+               'Place', 'Review']
 
     def all(self):
         """return __object dictionary"""
@@ -28,7 +29,7 @@ class FileStorage:
         # key = "{}.{}".format(self.__class__.__name__, obj.id)
         # FileStorage.__objects[key] = obj
         self.__objects.update({"{}.{}".format(type(obj).__name__,
-        obj.id): obj})
+                                              obj.id): obj})
         # print(type(obj))
 
     def save(self):
