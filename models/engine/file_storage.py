@@ -10,6 +10,7 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 class FileStorage:
     """store the information of airbnb"""
 
@@ -24,8 +25,11 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
 
-        key = "{}.{}".format(obj.__class__.__name__, obj.id)
+        key = "{}.{}".format(self.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
+        # self.__objects.update({"{}.{}".format(type(obj).__name__,
+        # obj.id): obj})
+        # print(type(obj))
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
@@ -35,8 +39,10 @@ class FileStorage:
             json.dump(d, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects (only if the JSON file (__file_path) exists ;
-            otherwise, do nothing. If the file does not exist, no exception should be raised)
+        """deserializes the JSON file to __objects
+        (only if the JSON file (__file_path) exists ;
+            otherwise, do nothing. If the file does not exist,
+        no exception should be raised)
         """
 
         if not os.path.isfile(FileStorage.__file_path):

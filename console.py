@@ -62,7 +62,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_show(self, arg):
-        'Prints the string representation of an instance based on the class name and id\n'
+        'Prints the string representation of an instance\
+        based on the class name and id\n'
 
         if not arg:
             print("** class name missing **")
@@ -86,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
                             print("** no instance found **")
                             return
 
-    def do_destroy(self,arg):
+    def do_destroy(self, arg):
         """delete an instance by class name and id\n"""
 
         if not arg:
@@ -112,7 +113,8 @@ class HBNBCommand(cmd.Cmd):
                 return
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not on the class name\n"""
+        """Prints all string representation of all instances\
+        based or not on the class name\n"""
         if not arg:
             list_of_strings = []
             for val in models.storage.all().values():
@@ -163,4 +165,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
