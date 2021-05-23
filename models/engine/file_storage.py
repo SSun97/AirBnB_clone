@@ -5,14 +5,14 @@ import os
 from models.base_model import BaseModel
 from models.user import User
 
+
 class FileStorage:
     """store the information of airbnb"""
 
     __file_path = 'file.json'
     __objects = {}    # saving the existing instances
     classes = {'BaseModel': BaseModel,
-               'User': User,
-              }
+               'User': User, }
 
     def all(self):
         """return __object dictionary"""
@@ -22,9 +22,10 @@ class FileStorage:
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
 
-        key = "{}.{}".format(type(obj).__name__, obj.id)
+        key = "{}.{}".format(self.__class__.__name__, obj.id)
         FileStorage.__objects[key] = obj
-        # self.__objects.update({"{}.{}".format(type(obj).__name__, obj.id): obj})
+        # self.__objects.update({"{}.{}".format(type(obj).__name__,
+        # obj.id): obj})
         # print(type(obj))
 
     def save(self):
@@ -36,8 +37,10 @@ class FileStorage:
             f.close()
 
     def reload(self):
-        """deserializes the JSON file to __objects (only if the JSON file (__file_path) exists ;
-            otherwise, do nothing. If the file does not exist, no exception should be raised)
+        """deserializes the JSON file to __objects
+        (only if the JSON file (__file_path) exists ;
+            otherwise, do nothing. If the file does not exist,
+        no exception should be raised)
         """
 
         if not os.path.isfile(FileStorage.__file_path):
