@@ -9,7 +9,8 @@ from models.engine.file_storage import FileStorage
 import json
 from os import remove, path
 
-class TestClassMerthods(unittest.TestCase):
+
+class TestClassMethods(unittest.TestCase):
     """test the Airbnb project"""
 
     def test_BaseModel_id(self):

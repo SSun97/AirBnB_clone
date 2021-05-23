@@ -10,3 +10,10 @@ class User(BaseModel):
     password = ""
     first_name = ""
     last_name = ""
+
+    def __init__(self, **kwargs):
+        super().__init__()
+
+    # def __str__(self):
+    #     return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+
