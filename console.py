@@ -98,7 +98,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] in FileStorage.classes:
                 if len(args) >= 2:
                     for key, val in models.storage.all().items():
-                        if (args[1] in key.split(".")) and (args[0] in key.split(".")):
+                        if (args[1] in key.split(".")) and\
+                           (args[0] in key.split(".")):
                             models.storage.all().pop(key)
                             models.storage.save()
                             return
