@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                     return
             else:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
                 return
 
     def do_all(self, arg):
