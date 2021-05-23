@@ -18,8 +18,8 @@ class HBNBCommand(cmd.Cmd):
     """the console of airbnb"""
     prompt = '(hbnb) '
 
-    def default(self, line: str):
-        args = line.split(".")
+    # def default(self, line: str):
+    #     args = line.split(".")
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
@@ -110,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                     return
             else:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
                 return
 
     def do_all(self, arg):
