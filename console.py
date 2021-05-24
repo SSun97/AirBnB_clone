@@ -28,6 +28,10 @@ class HBNBCommand(cmd.Cmd):
         if command.group(1) and command.group(2) == 'count':
             print(FileStorage.count(self, command.group(1)))
             return
+        command2 = re.search(r"^(\w*)\.(\w+)\((\S+)\)", line)
+        if command2.group(2) == 'show':
+            string = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
+            self.do_show(string)
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
