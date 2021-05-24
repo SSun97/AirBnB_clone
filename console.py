@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def default(self, line: str):
-        command = re.search(r"^(\w*)\.(\w+)\((\W+)\)$", line)
+        command = re.search(r"^(\w*)\.(\w+)(\W+)", line)
         if command.group(1) and command.group(2) == 'all':
             self.do_all("{}".format(command.group(1)))
             return
