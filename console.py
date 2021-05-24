@@ -3,6 +3,8 @@
 
 
 import cmd
+import re
+
 import models
 from models import FileStorage
 from models.amenity import Amenity
@@ -18,8 +20,11 @@ class HBNBCommand(cmd.Cmd):
     """the console of airbnb"""
     prompt = '(hbnb) '
 
-    # def default(self, line: str):
-    #     args = line.split(".")
+    def default(self, line: str):
+        command = re.search(r"^(\w*)\.(\w+)", line)
+        if command.group(1) and command.group(2) == 'all':
+            self.do_all("{}".format(command.group(1)))
+
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
