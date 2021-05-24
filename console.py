@@ -32,6 +32,9 @@ class HBNBCommand(cmd.Cmd):
         if command2.group(2) == 'show':
             string = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
             self.do_show(string)
+        if command2.group(2) == "destroy":
+            string1 = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
+            self.do_destroy(string1)
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
