@@ -32,9 +32,21 @@ class HBNBCommand(cmd.Cmd):
         if command2.group(2) == 'show':
             string = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
             self.do_show(string)
+            return
         if command2.group(2) == "destroy":
             string1 = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
             self.do_destroy(string1)
+            return
+        # command3 = re.search(r"^(\w*)\.(\w+)(\s+)", line)
+        # # if command3.group(2) == "update":
+        # print(command3.group(1))
+        # print(command3.group(2))
+        # print(command3.group(3))
+        # # command3 = re.search(r"^(\S*),(\S*),(\S*)")
+        # # if command2.group(2) == 'update':
+        # #     print(command3.group(1).replace("\"", "", 2))
+        # #     print(command3.group(1).replace("\"", "", 2))
+        # #     print(command3.group(1).replace("\"", "", 2))
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
