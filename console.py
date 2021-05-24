@@ -30,11 +30,13 @@ class HBNBCommand(cmd.Cmd):
             return
         command2 = re.search(r"^(\w*)\.(\w+)\((\S+)\)", line)
         if command2.group(2) == 'show':
-            string = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
+            string = command2.group(1) + " " +\
+                     command2.group(3).replace("\"", "", 2)
             self.do_show(string)
             return
         if command2.group(2) == "destroy":
-            string1 = command2.group(1) + " " + command2.group(3).replace("\"", "", 2)
+            string1 = command2.group(1) + " " +\
+                      command2.group(3).replace("\"", "", 2)
             self.do_destroy(string1)
             return
         # command3 = re.search(r"^(\w*)\.(\w+)(\s+)", line)
