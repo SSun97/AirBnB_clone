@@ -16,7 +16,11 @@ git clone https://github.com/HLozano12/AirBnB_clone.git
 
 
 ## Usage
-
+- create: creates a new instance of class
+- show: prints instance of class
+- destroy: deletes the instance
+- all: prints strings of all instances
+- update: updates an instance attribute
 
 
 ## Contributing
@@ -29,4 +33,5 @@ The repository contributors are as listed:
 **Hector Lozano**
 
 
-## Bugs & Issues 
+## Bugs & Issues
+-None at the time
