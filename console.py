@@ -3,6 +3,8 @@
 
 
 import cmd
+import re
+
 import models
 from models import FileStorage
 from models.amenity import Amenity
@@ -19,7 +21,34 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
 
     def default(self, line: str):
-        args = line.split(".")
+        command = re.search(r"^(\w*)\.(\w+)(\W+)", line)
+        if command.group(1) and command.group(2) == 'all':
+            self.do_all("{}".format(command.group(1)))
+            return
+        if command.group(1) and command.group(2) == 'count':
+            print(FileStorage.count(self, command.group(1)))
+            return
+        command2 = re.search(r"^(\w*)\.(\w+)\((\S+)\)", line)
+        if command2.group(2) == 'show':
+            string = command2.group(1) + " " +\
+                     command2.group(3).replace("\"", "", 2)
+            self.do_show(string)
+            return
+        if command2.group(2) == "destroy":
+            string1 = command2.group(1) + " " +\
+                      command2.group(3).replace("\"", "", 2)
+            self.do_destroy(string1)
+            return
+        # command3 = re.search(r"^(\w*)\.(\w+)(\s+)", line)
+        # # if command3.group(2) == "update":
+        # print(command3.group(1))
+        # print(command3.group(2))
+        # print(command3.group(3))
+        # # command3 = re.search(r"^(\S*),(\S*),(\S*)")
+        # # if command2.group(2) == 'update':
+        # #     print(command3.group(1).replace("\"", "", 2))
+        # #     print(command3.group(1).replace("\"", "", 2))
+        # #     print(command3.group(1).replace("\"", "", 2))
 
     def do_quit(self, arg: str):
         'Quit command to exit the program\n'
@@ -98,7 +127,8 @@ class HBNBCommand(cmd.Cmd):
             if args[0] in FileStorage.classes:
                 if len(args) >= 2:
                     for key, val in models.storage.all().items():
-                        if (args[1] in key.split(".")) and (args[0] in key.split(".")):
+                        if (args[1] in key.split(".")) and\
+                           (args[0] in key.split(".")):
                             models.storage.all().pop(key)
                             models.storage.save()
                             return
@@ -109,7 +139,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** instance id missing **")
                     return
             else:
-                print("** class doesn't exists **")
+                print("** class doesn't exist **")
                 return
 
     def do_all(self, arg):

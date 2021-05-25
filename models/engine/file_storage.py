@@ -2,6 +2,8 @@
 """Doc"""
 import json
 import os
+
+import models
 from models.amenity import Amenity
 from models.base_model import BaseModel
 from models.city import City
@@ -16,19 +18,29 @@ class FileStorage:
 
     __file_path = 'file.json'
     __objects = {}    # saving the existing instances
-    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review']
+    classes = ['BaseModel', 'User', 'State', 'City', 'Amenity',
+               'Place', 'Review']
 
     def all(self):
         """return __object dictionary"""
         return FileStorage.__objects
 
+    def count(self, arg):
+        """return the number of __object keys"""
+
+        list_of_strings = []
+        for key, val in models.storage.all().items():
+            if arg in key.split("."):
+                list_of_strings.append(str(val))
+        return len(list_of_strings)
+
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
 
-        key = "{}.{}".format(self.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj
-        # self.__objects.update({"{}.{}".format(type(obj).__name__,
-        # obj.id): obj})
+        # key = "{}.{}".format(self.__class__.__name__, obj.id)
+        # FileStorage.__objects[key] = obj
+        self.__objects.update({"{}.{}".format(type(obj).__name__,
+                                              obj.id): obj})
         # print(type(obj))
 
     def save(self):
