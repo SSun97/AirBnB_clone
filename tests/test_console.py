@@ -10,6 +10,7 @@ from console import HBNBCommand
 with patch('sys.stdout', new=StringIO()) as f:
     string = HBNBCommand().onecmd("help show")
 
+
 class TestClassMethods(unittest.TestCase):
     """test the Airbnb project"""
 
@@ -19,8 +20,6 @@ class TestClassMethods(unittest.TestCase):
             HBNBCommand().onecmd("help quit")
         string = """Quit command to exit the program\n\n"""
         self.assertEqual(string, f.getvalue())
-
-
 
 if __name__ == '__main__':
     unittest.main()
